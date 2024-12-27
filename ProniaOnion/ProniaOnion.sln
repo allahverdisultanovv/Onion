@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35506.116 d17.12
+VisualStudioVersion = 17.12.35506.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CBACA330-596D-4C80-B845-260F8388AA89}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProniaOnion.Infrastructure", "src\Infrastructure\ProniaOnion.Infrastructure\ProniaOnion.Infrastructure.csproj", "{294A484B-6A04-4D58-9C20-489D68767A1C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProniaOnion.Persistence", "src\Infrastructure\ProniaOnion.Persistence\ProniaOnion.Persistence.csproj", "{2E52FE6F-D6A5-4670-9844-4DC08BCF0EFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProniaOnion.Api", "presentation\ProniaOnion.Api\ProniaOnion.Api.csproj", "{D2F95F20-7DCC-437B-B4BA-64F20483ED92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{2E52FE6F-D6A5-4670-9844-4DC08BCF0EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E52FE6F-D6A5-4670-9844-4DC08BCF0EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E52FE6F-D6A5-4670-9844-4DC08BCF0EFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2F95F20-7DCC-437B-B4BA-64F20483ED92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2F95F20-7DCC-437B-B4BA-64F20483ED92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2F95F20-7DCC-437B-B4BA-64F20483ED92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2F95F20-7DCC-437B-B4BA-64F20483ED92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,5 +60,6 @@ Global
 		{CBD8E17A-5EE2-4EA6-A142-F10895139AEE} = {8F1194A2-12A9-480C-BF7F-24A52453E273}
 		{294A484B-6A04-4D58-9C20-489D68767A1C} = {0D83E4EB-E402-4885-B726-D7157FE07B2D}
 		{2E52FE6F-D6A5-4670-9844-4DC08BCF0EFE} = {0D83E4EB-E402-4885-B726-D7157FE07B2D}
+		{D2F95F20-7DCC-437B-B4BA-64F20483ED92} = {8892D404-DDE0-46D7-AAE2-A36270880A42}
 	EndGlobalSection
 EndGlobal
