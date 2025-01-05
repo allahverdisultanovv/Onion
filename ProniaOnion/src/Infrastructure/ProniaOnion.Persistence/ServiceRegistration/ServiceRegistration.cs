@@ -20,9 +20,14 @@ namespace ProniaOnion.Persistence.ServiceRegistration
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IColorRepository, ColorRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ITagRepository, TagRepository>();
+            services.AddScoped<ISizeRepository, SizeRepository>();
 
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IColorService, ColorService>();
+            services.AddScoped<ITagService, TagService>();
+            services.AddScoped<ISizeService, SizeService>();
+
 
 
 
