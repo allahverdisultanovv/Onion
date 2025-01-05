@@ -2,7 +2,7 @@
 
 namespace ProniaOnion.Application.Abstractions.Repositories
 {
-    public interface IBlogRepositpry : IRepository<Blog>
+    public interface IBlogRepository : IRepository<Blog>
     {
     }
 }
