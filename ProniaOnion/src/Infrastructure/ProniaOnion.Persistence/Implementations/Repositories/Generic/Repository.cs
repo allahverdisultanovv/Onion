@@ -74,7 +74,7 @@ namespace ProniaOnion.Persistence.Implementations.Repositories
             return await _context.SaveChangesAsync();
         }
 
-        public async Task<bool> AnyAsync(Expression<Func<object, bool>> expression)
+        public async Task<bool> AnyAsync(Expression<Func<T, bool>> expression)
         {
             return await _table.AnyAsync(expression);
         }

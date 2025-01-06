@@ -20,7 +20,7 @@ namespace ProniaOnion.Persistence.Implementations.Services
             _mapper = mapper;
         }
 
-        public async Task<bool> AnyAsync(Expression<Func<object, bool>> expression)
+        public async Task<bool> AnyAsync(Expression<Func<Category, bool>> expression)
         {
             return await _repository.AnyAsync(expression);
 

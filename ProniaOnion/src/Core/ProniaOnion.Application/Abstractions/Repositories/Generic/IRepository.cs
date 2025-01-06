@@ -19,6 +19,6 @@ namespace ProniaOnion.Application.Abstractions.Repositories
         void Update(T entity);
         void Delete(T entity);
         Task<int> SaveChangesAsync();
-        Task<bool> AnyAsync(Expression<Func<object, bool>> expression);
+        Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
     }
 }
