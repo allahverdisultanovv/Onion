@@ -53,6 +53,8 @@ namespace ProniaOnion.Persistence.ServiceRegistration
             services.AddScoped<IGenreService, GenreService>();
             services.AddScoped<IAuthorService, AuthorService>();
             services.AddScoped<IBlogService, BlogService>();
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
+
 
 
 
