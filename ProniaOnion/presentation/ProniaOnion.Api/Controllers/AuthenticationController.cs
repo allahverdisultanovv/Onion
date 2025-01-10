@@ -19,7 +19,12 @@ namespace ProniaOnion.Api.Controllers
         public async Task<IActionResult> Register([FromForm] RegisterDto userDto)
         {
             await _service.RegisterAsync(userDto);
-            return NoContent(); ik
+            return NoContent();
+        }
+        public async Task<IActionResult> Login([FromForm] LoginDto userDto)
+        {
+            await _service.LoginAsync(userDto);
+            return NoContent();
         }
     }
 }

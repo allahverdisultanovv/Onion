@@ -36,6 +36,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ProniaOnion.Api.Controllers.AuthenticationController",
+    "Method": "Login",
+    "RelativePath": "api/Authentication",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserNameorEmail",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ProniaOnion.Api.Controllers.AuthorsController",
     "Method": "Get",
     "RelativePath": "api/Authors",

@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using ProniaOnion.Application.Abstractions;
 using ProniaOnion.Application.Abstractions.Services;
+using ProniaOnion.Application.DTOs;
 using ProniaOnion.Application.DTOs.AppUsers;
 using ProniaOnion.Domain.Entities;
 using System.Text;
@@ -12,11 +14,13 @@ namespace ProniaOnion.Persistence.Implementations.Services
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly IMapper _mapper;
+        private readonly ITokenHandler _handler;
 
-        public AuthenticationService(UserManager<AppUser> userManager, IMapper mapper)
+        public AuthenticationService(UserManager<AppUser> userManager, IMapper mapper, ITokenHandler handler)
         {
             _userManager = userManager;
             _mapper = mapper;
+            _handler = handler;
         }
         public async Task RegisterAsync(RegisterDto userDto)
         {
@@ -34,7 +38,7 @@ namespace ProniaOnion.Persistence.Implementations.Services
                 throw new Exception(str.ToString());
             }
         }
-        public async Task LoginAsync(LoginDto userDto)
+        public async Task<TokenResponseDto> LoginAsync(LoginDto userDto)
         {
             AppUser user = await _userManager.Users.FirstOrDefaultAsync(u => u.Name == userDto.UserNameorEmail || u.Email == userDto.UserNameorEmail);
             if (user == null)
@@ -42,9 +46,10 @@ namespace ProniaOnion.Persistence.Implementations.Services
             bool result = await _userManager.CheckPasswordAsync(user, userDto.Password);
             if (!result)
             {
-                await _userManager.AccessFailedAsync(user)
+                await _userManager.AccessFailedAsync(user);
                 throw new Exception("username ,email or password is incorrect");
             }
+            return _handler.CreateToken(user, 15);
 
         }
     }
