@@ -20,9 +20,9 @@ namespace ProniaOnion.Application.Validators
                 .Matches(@"^[A-Za-z\s0-9]{,10}$");
             //.MustAsync(CheckNameExistence);
         }
-        private async Task<bool> CheckNameExistence(string name, CancellationToken cancellationToken)
-        {
-            return await _sizeRepository.AnyAsync(s => s.Name == name);
-        }
+        //private async Task<bool> CheckNameExistence(string name, CancellationToken cancellationToken)
+        //{
+        //    return await _sizeRepository.AnyAsync(s => s.Name == name);
+        //}
     }
 }
