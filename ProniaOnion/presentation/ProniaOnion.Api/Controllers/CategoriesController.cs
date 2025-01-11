@@ -47,5 +47,13 @@ namespace ProniaOnion.Api.Controllers
             _categoryService.Update(id, categoryDto);
             return NoContent();
         }
+        [HttpDelete("{Action}/{id}")]
+        public IActionResult Archive(int id)
+        {
+            if (id == null || id < 1) return BadRequest();
+            _categoryService.SoftDelete(id);
+            return StatusCode(StatusCodes.Status204NoContent);
+
+        }
     }
 }

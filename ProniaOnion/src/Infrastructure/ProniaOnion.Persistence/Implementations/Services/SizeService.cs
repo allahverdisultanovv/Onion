@@ -29,9 +29,6 @@ namespace ProniaOnion.Persistence.Implementations.Services
         {
 
             Size size = _mapper.Map<Size>(sizeDto);
-
-            size.CreatedAt = DateTime.Now;
-            size.UpdatedAt = DateTime.Now;
             await _repository.AddAsync(size);
             await _repository.SaveChangesAsync();
         }
@@ -67,7 +64,6 @@ namespace ProniaOnion.Persistence.Implementations.Services
             Size size = await _repository.GetByIdAsync(id);
             if (size == null) throw new Exception("Not Found");
             size = _mapper.Map(sizeDto, size);
-            size.UpdatedAt = DateTime.Now;
             _repository.Update(size);
             await _repository.SaveChangesAsync();
         }

@@ -31,8 +31,6 @@ namespace ProniaOnion.Persistence.Implementations.Services
 
             Author author = _mapper.Map<Author>(authorDto);
 
-            author.CreatedAt = DateTime.Now;
-            author.UpdatedAt = DateTime.Now;
             await _repository.AddAsync(author);
             await _repository.SaveChangesAsync();
         }
@@ -43,6 +41,7 @@ namespace ProniaOnion.Persistence.Implementations.Services
             _repository.Delete(author);
             await _repository.SaveChangesAsync();
         }
+
 
         public async Task<IEnumerable<AuthorItemDto>> GetAllAsync(int page, int take)
         {
@@ -68,7 +67,6 @@ namespace ProniaOnion.Persistence.Implementations.Services
             Author author = await _repository.GetByIdAsync(id);
             if (author == null) throw new Exception("Not Found");
             author = _mapper.Map(authorDto, author);
-            author.UpdatedAt = DateTime.Now;
             _repository.Update(author);
             await _repository.SaveChangesAsync();
         }

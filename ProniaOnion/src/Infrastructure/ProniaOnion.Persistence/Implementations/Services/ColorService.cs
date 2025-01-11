@@ -22,8 +22,6 @@ namespace ProniaOnion.Persistence.Implementations.Services
         {
             Color color = _mapper.Map<Color>(colorDto);
 
-            color.CreatedAt = DateTime.Now;
-            color.UpdatedAt = DateTime.Now;
             await _repository.AddAsync(color);
             await _repository.SaveChangesAsync();
         }
@@ -59,7 +57,6 @@ namespace ProniaOnion.Persistence.Implementations.Services
             Color color = await _repository.GetByIdAsync(id);
             if (color == null) throw new Exception("Not Found");
             color = _mapper.Map<Color>(colorDto);
-            color.UpdatedAt = DateTime.Now;
             _repository.Update(color);
             await _repository.SaveChangesAsync();
         }

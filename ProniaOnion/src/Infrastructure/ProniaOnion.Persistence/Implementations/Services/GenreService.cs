@@ -30,8 +30,6 @@ namespace ProniaOnion.Persistence.Implementations.Services
 
             Genre genre = _mapper.Map<Genre>(genreDto);
 
-            genre.CreatedAt = DateTime.Now;
-            genre.UpdatedAt = DateTime.Now;
             await _repository.AddAsync(genre);
             await _repository.SaveChangesAsync();
         }
@@ -67,7 +65,6 @@ namespace ProniaOnion.Persistence.Implementations.Services
             Genre genre = await _repository.GetByIdAsync(id);
             if (genre == null) throw new Exception("Not Found");
             genre = _mapper.Map(genreDto, genre);
-            genre.UpdatedAt = DateTime.Now;
             _repository.Update(genre);
             await _repository.SaveChangesAsync();
         }

@@ -38,6 +38,7 @@ namespace ProniaOnion.Persistence.Implementations.Services
                 throw new Exception(str.ToString());
             }
         }
+
         public async Task<TokenResponseDto> LoginAsync(LoginDto userDto)
         {
             AppUser user = await _userManager.Users.FirstOrDefaultAsync(u => u.Name == userDto.UserNameorEmail || u.Email == userDto.UserNameorEmail);

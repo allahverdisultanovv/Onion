@@ -23,6 +23,7 @@ namespace ProniaOnion.Persistence.Implementations.Repositories
             int take = 0,
             bool isDescending = false,
             bool isTracking = false,
+            bool ignoreQuery = false,
             params string[]? includes
             )
         {
@@ -50,7 +51,8 @@ namespace ProniaOnion.Persistence.Implementations.Repositories
             if (take != 0)
                 query = query.Take(take);
 
-
+            if (ignoreQuery)
+                query.IgnoreQueryFilters();
             return isTracking ? query : query.AsNoTracking();
         }
         public async Task<T> GetByIdAsync(int id)
@@ -78,5 +80,7 @@ namespace ProniaOnion.Persistence.Implementations.Repositories
         {
             return await _table.AnyAsync(expression);
         }
+
+
     }
 }

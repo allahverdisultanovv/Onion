@@ -31,8 +31,6 @@ namespace ProniaOnion.Persistence.Implementations.Services
 
             Category category = _mapper.Map<Category>(categoryDto);
 
-            category.CreatedAt = DateTime.Now;
-            category.UpdatedAt = DateTime.Now;
             await _repository.AddAsync(category);
             await _repository.SaveChangesAsync();
         }
@@ -52,11 +50,10 @@ namespace ProniaOnion.Persistence.Implementations.Services
                 .ToListAsync();
             return _mapper.Map<IEnumerable<CategoryItemDto>>(categories);
         }
-
         public async Task<GetCategoryDto> GetByIdAsync(int id)
         {
             Category category = await _repository.GetByIdAsync(id);
-            if (category == null) throw new Exception("SALAM. ERROR .TAPIlADI");
+            if (category == null) throw new Exception("SALAM. ERROR .TAPILMADI");
 
             GetCategoryDto categoryDto = _mapper.Map<GetCategoryDto>(category);
 
@@ -68,8 +65,19 @@ namespace ProniaOnion.Persistence.Implementations.Services
             Category category = await _repository.GetByIdAsync(id);
             if (category == null) throw new Exception("Not Found");
             category = _mapper.Map(categoryDto, category);
-            category.UpdatedAt = DateTime.Now;
             _repository.Update(category);
+            await _repository.SaveChangesAsync();
+        }
+
+
+        public async Task SoftDelete(int id)
+        {
+            Category category = await _repository.GetByIdAsync(id);
+            if (category == null) throw new Exception("not found");
+
+            category.IsDeleted = true;
+            _repository.Update(category);
+
             await _repository.SaveChangesAsync();
         }
     }

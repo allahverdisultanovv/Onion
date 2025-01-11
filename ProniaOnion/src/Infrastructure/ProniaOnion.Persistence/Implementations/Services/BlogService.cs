@@ -30,8 +30,6 @@ namespace ProniaOnion.Persistence.Implementations.Services
 
             Blog blog = _mapper.Map<Blog>(blogDto);
 
-            blog.CreatedAt = DateTime.Now;
-            blog.UpdatedAt = DateTime.Now;
             await _repository.AddAsync(blog);
             await _repository.SaveChangesAsync();
         }
@@ -67,7 +65,6 @@ namespace ProniaOnion.Persistence.Implementations.Services
             Blog blog = await _repository.GetByIdAsync(id);
             if (blog == null) throw new Exception("Not Found");
             blog = _mapper.Map(blogDto, blog);
-            blog.UpdatedAt = DateTime.Now;
             _repository.Update(blog);
             await _repository.SaveChangesAsync();
         }

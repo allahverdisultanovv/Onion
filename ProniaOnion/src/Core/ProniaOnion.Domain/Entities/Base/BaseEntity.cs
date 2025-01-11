@@ -7,9 +7,6 @@
         public DateTime UpdatedAt { get; set; }
         public string CreatedBy { get; set; }
         public bool IsDeleted { get; set; }
-        protected BaseEntity()
-        {
-            CreatedBy = "admin";
-        }
+
     }
 }

@@ -38,8 +38,8 @@
   {
     "ContainingType": "ProniaOnion.Api.Controllers.AuthenticationController",
     "Method": "Login",
-    "RelativePath": "api/Authentication",
-    "HttpMethod": "",
+    "RelativePath": "api/Authentication/{Action}",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -52,6 +52,11 @@
         "Name": "Password",
         "Type": "System.String",
         "IsRequired": false
+      },
+      {
+        "Name": "Action",
+        "Type": "",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -309,6 +314,27 @@
         "Name": "Name",
         "Type": "System.String",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProniaOnion.Api.Controllers.CategoriesController",
+    "Method": "Archive",
+    "RelativePath": "api/Categories/{Action}/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "Action",
+        "Type": "",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

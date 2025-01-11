@@ -30,8 +30,6 @@ namespace ProniaOnion.Persistence.Implementations.Services
 
             Tag tag = _mapper.Map<Tag>(tagDto);
 
-            tag.CreatedAt = DateTime.Now;
-            tag.UpdatedAt = DateTime.Now;
             await _repository.AddAsync(tag);
             await _repository.SaveChangesAsync();
         }
@@ -67,7 +65,6 @@ namespace ProniaOnion.Persistence.Implementations.Services
             Tag tag = await _repository.GetByIdAsync(id);
             if (tag == null) throw new Exception("Not Found");
             tag = _mapper.Map(tagDto, tag);
-            tag.UpdatedAt = DateTime.Now;
             _repository.Update(tag);
             await _repository.SaveChangesAsync();
         }
