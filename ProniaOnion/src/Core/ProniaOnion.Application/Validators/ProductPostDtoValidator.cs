@@ -34,6 +34,16 @@ namespace ProniaOnion.Application.Validators
             RuleForEach(p => p.ColorIds)
                 .NotEmpty()
                 .Must(colorId => colorId > 0);
+
+
+            RuleForEach(p => p.TagIds)
+                .NotEmpty()
+                .Must(tagId => tagId > 0);
+
+
+            RuleForEach(p => p.SizeIds)
+                .NotEmpty()
+                .Must(sizeId => sizeId > 0);
         }
     }
 }

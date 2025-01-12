@@ -8,6 +8,9 @@ namespace ProniaOnion.Application.Abstractions.Services
 
         Task<GetProductDto> GetByIdAsync(int id);
 
+        Task CreateAsync(ProductPostDto productDto);
+
+        Task UpdateAsync(int id, ProductPutDto productDto);
 
 
     }

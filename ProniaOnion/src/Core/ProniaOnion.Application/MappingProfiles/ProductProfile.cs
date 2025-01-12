@@ -41,6 +41,37 @@ namespace ProniaOnion.Application.MappingProfiles
                 opt => opt.MapFrom(
                         p => p.ProductTags.Select(pc => new ColorItemDto(pc.TagId, pc.Tag.Name))
                 ));
+
+
+            CreateMap<ProductPostDto, Product>().ForMember(
+                p => p.ProductTags,
+                opt => opt.MapFrom(pDto => pDto.TagIds.Select(ti => new ProductTag { TagId = ti, }))
+                )
+                .ForMember(
+                p => p.ProductColors,
+                opt => opt.MapFrom(pDto => pDto.ColorIds.Select(ci => new ProductColor { ColorId = ci, }))
+                )
+                .ForMember(
+                p => p.ProductSizes,
+                opt => opt.MapFrom(pDto => pDto.SizeIds.Select(si => new ProductSize { SizeId = si, }))
+                );
+
+            CreateMap<ProductPutDto, Product>()
+                .ForMember(p => p.Id,
+                    opt => opt.Ignore()
+                )
+               .ForMember(
+                p => p.ProductTags,
+                opt => opt.MapFrom(pDto => pDto.TagIds.Select(ti => new ProductTag { TagId = ti, }))
+                )
+                .ForMember(
+                p => p.ProductColors,
+                opt => opt.MapFrom(pDto => pDto.ColorIds.Select(ci => new ProductColor { ColorId = ci, }))
+                )
+                .ForMember(
+                p => p.ProductSizes,
+                opt => opt.MapFrom(pDto => pDto.SizeIds.Select(si => new ProductSize { SizeId = si, }))
+                );
         }
     }
 }

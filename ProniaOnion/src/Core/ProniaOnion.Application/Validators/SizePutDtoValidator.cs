@@ -16,8 +16,7 @@ namespace ProniaOnion.Application.Validators
 
             RuleFor(c => c.Name)
                 .MaximumLength(10).WithMessage("Uzunluq Max 10 ola biler")
-                .NotEmpty()
-                .Matches(@"^[A-Za-z\s0-9]{,10}$");
+                .NotEmpty();
             //.MustAsync(CheckNameExistence);
         }
         //private async Task<bool> CheckNameExistence(string name, CancellationToken cancellationToken)
