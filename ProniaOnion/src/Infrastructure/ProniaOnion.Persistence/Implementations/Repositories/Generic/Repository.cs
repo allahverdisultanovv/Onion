@@ -55,9 +55,14 @@ namespace ProniaOnion.Persistence.Implementations.Repositories
                 query.IgnoreQueryFilters();
             return isTracking ? query : query.AsNoTracking();
         }
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(int id, params string[] includes)
         {
-            return await _table.FirstOrDefaultAsync(c => c.Id == id);
+            IQueryable<T> query = _table;
+
+            if (includes != null)
+                query = _getIncludes(query, includes);
+
+            return await query.FirstOrDefaultAsync(x => x.Id == id);
         }
         public void Update(T entity)
         {
@@ -80,7 +85,14 @@ namespace ProniaOnion.Persistence.Implementations.Repositories
         {
             return await _table.AnyAsync(expression);
         }
-
+        private IQueryable<T> _getIncludes(IQueryable<T> query, params string[] includes)
+        {
+            for (int i = 0; i < includes.Length; i++)
+            {
+                query = query.Include(includes[i]);
+            }
+            return query;
+        }
 
     }
 }
